@@ -1,4 +1,4 @@
-
+package client.gui;
 
 
 import javax.swing.GroupLayout.Alignment;
@@ -39,29 +39,13 @@ public class VentanaRegistro extends JFrame {
     private javax.swing.JLabel lblAltura;
     private javax.swing.JLabel lblFrecuenciaMax;
     private javax.swing.JPanel panelCreacionUsuario;
- //   private com.toedter.calendar.JDateChooser txtFecha1;
+    private com.toedter.calendar.JDateChooser txtFecha1;
     private javax.swing.JTextField txtNombre;
     private ImageIcon imagenGuardar;
     private JTextField textEmail;
     private JPasswordField txtcontrasenia;
-    //private JDateChooser dateChooser;
+    private JDateChooser dateChooser;
     
- 	/* MAIN */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					VentanaRegistro vr = new VentanaRegistro();
-							
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-  
 
     public VentanaRegistro() {
     	

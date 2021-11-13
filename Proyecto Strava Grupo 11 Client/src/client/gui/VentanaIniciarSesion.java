@@ -1,7 +1,13 @@
-import java.awt.*;   
+package client.gui;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+
+import client.MainProgram;
 
 
 
@@ -24,22 +30,6 @@ public class VentanaIniciarSesion extends JFrame {
 
 	private JPanel panelDecorativo;
 	private JLabel labelDecorativo;
-
-	/* MAIN 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					VentanaIniciarSesion v = new VentanaIniciarSesion();
-							
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 
 
 	public VentanaIniciarSesion() {
@@ -95,18 +85,25 @@ public class VentanaIniciarSesion extends JFrame {
 		panelBotonera.setBackground(new Color(111, 195, 179));
 		panelDatos.add(panelBotonera);
 
-	
-				
-
-
-			
-
-
-
-		
-
-
 		setVisible(true);		
+
+	
+	aceptar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainProgram.loginDialog.login();
+			}
+		});
+	
+	crearUsuario.addActionListener(new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			VentanaRegistro ventanaRegistro = new VentanaRegistro();
+		}
+	});
+	
+	
 	}
 
 
