@@ -2,6 +2,7 @@ package client.controller;
 
 import java.rmi.RemoteException;
 import client.remote.ServiceLocator;
+import server.dto.UsuarioDTO;
 
 //This class implements Controller pattern.
 public class LoginController {	
@@ -38,4 +39,15 @@ public class LoginController {
 	public long getToken() {
 		return token;
 	}
+	
+	public UsuarioDTO getUsuario(String email, String contrasenya) {
+		try {
+			return this.serviceLocator.getService().getUsuario(email, contrasenya);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+
 }
