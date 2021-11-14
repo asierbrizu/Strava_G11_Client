@@ -23,6 +23,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
 import com.toedter.calendar.JDateChooser;
 
+import client.controller.StravaController;
+import server.dto.UsuarioDTO;
+
 
 
 public class VentanaRegistro extends JFrame {
@@ -46,8 +49,8 @@ public class VentanaRegistro extends JFrame {
     private JPasswordField txtcontrasenia;
     private JDateChooser dateChooser;
     
-
-    public VentanaRegistro() {
+    public VentanaRegistro() {}
+    public VentanaRegistro(UsuarioDTO usuario, StravaController controlador) {
     	
    
     	
