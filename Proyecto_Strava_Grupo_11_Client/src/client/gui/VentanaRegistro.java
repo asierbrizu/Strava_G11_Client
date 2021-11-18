@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
 import com.toedter.calendar.JDateChooser;
 
-import client.controller.StravaController;
+
 import server.dto.UsuarioDTO;
 
 
@@ -49,8 +49,7 @@ public class VentanaRegistro extends JFrame {
     private JPasswordField txtcontrasenia;
     private JDateChooser dateChooser;
     
-    public VentanaRegistro() {}
-    public VentanaRegistro(UsuarioDTO usuario, StravaController controlador) {
+    public VentanaRegistro() {
     	
    
     	
@@ -71,6 +70,7 @@ public class VentanaRegistro extends JFrame {
         btnGuardar.setIcon(imagenGuardar);
         btnGuardar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		dispose();
         	}
         });
         btnCancelar = new javax.swing.JButton();

@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import client.controller.StravaController;
 import server.dto.UsuarioDTO;
 
 
@@ -22,7 +21,7 @@ public class VentanaCrearReto extends JFrame {
 	
 	
 
-	public VentanaCrearReto(UsuarioDTO usuario, StravaController controlador) {
+	public VentanaCrearReto(UsuarioDTO usuario) {
 		getContentPane().setForeground(new Color(0, 0, 0));
 		getContentPane().setBackground(new Color(224, 255, 255));
 		setBounds(100, 100, 597, 339);
@@ -40,7 +39,7 @@ public class VentanaCrearReto extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new VentanaPrincipal(usuario, controlador);
+				new VentanaPrincipal(usuario);
 			}
 		});
 		getContentPane().add(btnVolver);
@@ -48,6 +47,9 @@ public class VentanaCrearReto extends JFrame {
 		JButton btnAniadir = new JButton("Añadir");
 		btnAniadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new VentanaPrincipal(usuario);
+			
 			}
 		});
 		btnAniadir.setBounds(230, 268, 89, 23);

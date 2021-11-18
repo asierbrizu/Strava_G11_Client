@@ -16,7 +16,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import client.controller.StravaController;
 import server.dto.SesionDTO;
 import server.dto.RetoDTO;
 import server.dto.UsuarioDTO;
@@ -26,7 +25,7 @@ public class VentanaObtenerRetosActivos extends JFrame {
 	private ArrayList<RetoDTO> listaActual = new ArrayList<>();
 	private JComboBox comboBox;
 
-	public VentanaObtenerRetosActivos(UsuarioDTO usuario, StravaController controlador, List<RetoDTO> retos, List<RetoDTO> retos2) {
+	public VentanaObtenerRetosActivos(UsuarioDTO usuario, List<RetoDTO> retos, List<RetoDTO> retos2) {
 
 		getContentPane().setBackground(new Color(224, 255, 255));
 		setBounds(100, 100, 694, 352);
@@ -36,6 +35,9 @@ public class VentanaObtenerRetosActivos extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new VentanaPrincipal(usuario);
+			
 			}
 		});
 		btnVolver.setBounds(20, 280, 89, 23);
@@ -69,6 +71,9 @@ public class VentanaObtenerRetosActivos extends JFrame {
 		JButton btnAniadir = new JButton("A\u00F1adir reto");
 		btnAniadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new VentanaPrincipal(usuario);
+			
 			}
 		});
 		btnAniadir.setBounds(140, 280, 89, 23);
@@ -115,7 +120,8 @@ public class VentanaObtenerRetosActivos extends JFrame {
 		getContentPane().add(comboBox_1);
 		comboBox_1.setSelectedIndex(-1);
 		comboBox_1.setBackground(Color.WHITE);
-
+		
+		comboBox = new JComboBox<>();
 
 		for (RetoDTO retoDTO : retos) {
 			listaActual.add(retoDTO);

@@ -6,18 +6,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import client.controller.StravaController;
+import client.controller.VentanaPrincipalController;
+import client.remote.ServiceLocator;
+import client.MainProgram;
 import client.controller.LoginController;
 import server.dto.SesionDTO;
 import server.dto.UsuarioDTO;
 
 public class VentanaPrincipal extends JFrame {	
 	
-	public VentanaPrincipal(UsuarioDTO usuario, StravaController controlador) {
+	private static VentanaPrincipalController controlador = MainProgram.ventanaPrincipalController;
+	
+	public VentanaPrincipal(UsuarioDTO usuario) {
 		
 		getContentPane().setBackground(new Color(224, 255, 255));
 		setBounds(100, 100, 779, 231);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
 		getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1_2_1 = new JLabel("");
@@ -28,15 +33,14 @@ public class VentanaPrincipal extends JFrame {
 		btnPerfil.setBackground(new Color(248, 248, 255));
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaRegistro(usuario, controlador);
-				dispose();
+				
 			}
 		});
 		btnPerfil.setBackground(new Color(250, 235, 215));
 		btnPerfil.setBounds(351, 142, 99, 39);
 		getContentPane().add(btnPerfil);
 		
-		JLabel lblTituloVentana = new JLabel("Bienvenido a Strava" + usuario.getNombre());
+		JLabel lblTituloVentana = new JLabel("Bienvenido a Strava " + usuario.getNombre());
 		lblTituloVentana.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTituloVentana.setFont(new Font("Haettenschweiler", Font.PLAIN, 27));
 		lblTituloVentana.setBounds(230, 11, 360, 37);
@@ -46,7 +50,7 @@ public class VentanaPrincipal extends JFrame {
 		btnCrearSesion.setBounds(10, 97, 175, 34);
 		btnCrearSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaCrearSesion(usuario, controlador);
+				new VentanaCrearSesion(usuario);
 				dispose();
 			}
 		});
@@ -55,7 +59,8 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnVerSesion = new JButton("Ver sesión");
 		btnVerSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaVerSesiones(usuario, controlador, controlador.getSesiones("Atletismo"), controlador.getSesiones("Futbol"));
+				new VentanaVerSesiones(usuario, controlador.getSesiones("Atletismo"), controlador.getSesiones("Futbol"));
+				dispose();
 			}
 		});
 		btnVerSesion.setBounds(195, 97, 175, 34);
@@ -65,7 +70,7 @@ public class VentanaPrincipal extends JFrame {
 		btnCrearReto.setBounds(378, 97, 175, 34);
 		btnCrearReto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaCrearReto(usuario, controlador);
+				new VentanaCrearReto(usuario);
 				dispose();
 			}
 		});
@@ -74,14 +79,16 @@ public class VentanaPrincipal extends JFrame {
 		JButton btnVerRetos = new JButton("Ver retos");
 		btnVerRetos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaObtenerRetosActivos(usuario, controlador, controlador.getRetos("Atletismo"), controlador.getRetos("Futbol"));
+				new VentanaObtenerRetosActivos(usuario, controlador.getRetos("Atletismo"), controlador.getRetos("Futbol"));
+				dispose();
 			}
 		});
 		btnVerRetos.setBounds(563, 97, 175, 34);
 		getContentPane().add(btnVerRetos);
 		
+		
+		
 		setVisible(true);
 	}
-	
 	
 }

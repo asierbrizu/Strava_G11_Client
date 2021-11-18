@@ -8,6 +8,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import client.MainProgram;
+import client.controller.LoginController;
+import server.dto.UsuarioDTO;
 
 
 
@@ -18,9 +20,9 @@ public class VentanaIniciarSesion extends JFrame {
 	private JTextField usuario;
 	private JLabel labelUsuario = new JLabel("        Usuario: ");
 
-	private JPanel panelcontraseña;
-	private JPasswordField contraseña;
-	private JLabel labelcontraseña = new JLabel("  Contraseña: ");
+	private JPanel panelcontrasenya;
+	private JPasswordField contrasenya;
+	private JLabel labelcontrasenya = new JLabel("  Contraseña: ");
 
 	private JButton aceptar;
 	private JButton crearUsuario;
@@ -31,11 +33,12 @@ public class VentanaIniciarSesion extends JFrame {
 	private JPanel panelDecorativo;
 	private JLabel labelDecorativo;
 
+	public static VentanaPrincipal principal ;
 
 	public VentanaIniciarSesion() {
 		setTitle("Inicio");
 		setSize(310,260);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLayout(new GridLayout(2,1));
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -67,18 +70,18 @@ public class VentanaIniciarSesion extends JFrame {
 		panelUsuario.setBackground(new Color(111, 195, 179));
 		panelDatos.add(panelUsuario);
 
-		panelcontraseña = new JPanel();
-		contraseña = new JPasswordField();
-		contraseña.setPreferredSize(new Dimension(100,25));
-		panelcontraseña.add(labelcontraseña);
-		panelcontraseña.add(contraseña);
-		panelcontraseña.setBackground(new Color(111, 195, 179));
-		panelDatos.add(panelcontraseña);
+		panelcontrasenya = new JPanel();
+		contrasenya = new JPasswordField();
+		contrasenya.setPreferredSize(new Dimension(100,25));
+		panelcontrasenya.add(labelcontrasenya);
+		panelcontrasenya.add(contrasenya);
+		panelcontrasenya.setBackground(new Color(111, 195, 179));
+		panelDatos.add(panelcontrasenya);
 
 		panelBotonera = new JPanel();
 		aceptar = new JButton("Iniciar Sesión");
 		crearUsuario = new JButton("Crear Nuevo Usuario");
-		aceptar.setEnabled(false);
+		aceptar.setEnabled(true);
 		crearUsuario.setEnabled(true);
 		panelBotonera.add(aceptar);
 		panelBotonera.add(crearUsuario);
@@ -91,7 +94,10 @@ public class VentanaIniciarSesion extends JFrame {
 	aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainProgram.loginDialog.login();
+				if(MainProgram.loginDialog.login()) {
+					principal = new VentanaPrincipal(new UsuarioDTO("prueba@opendeusto.es", "Asier Brizuela"));
+					
+				}
 			}
 		});
 	
@@ -99,7 +105,8 @@ public class VentanaIniciarSesion extends JFrame {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			VentanaRegistro ventanaRegistro = new VentanaRegistro();
+			new VentanaRegistro();
+			
 		}
 	});
 	
@@ -108,8 +115,13 @@ public class VentanaIniciarSesion extends JFrame {
 
 
 
+	@Override
+	public void dispose() {
+		MainProgram.loginDialog.logout();
+		super.dispose();
+	}
 	
-
+	
 
 	
 

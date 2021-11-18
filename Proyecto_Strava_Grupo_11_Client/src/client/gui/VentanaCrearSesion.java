@@ -14,7 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import client.controller.StravaController;
+import server.dto.SesionDTO;
 import server.dto.UsuarioDTO;
 
 
@@ -33,7 +33,7 @@ public class VentanaCrearSesion extends JFrame {
 
 	
 	
-	public VentanaCrearSesion(UsuarioDTO usuario, StravaController controlador) {
+	public VentanaCrearSesion(UsuarioDTO usuario) {
 		
 		getContentPane().setForeground(new Color(0, 0, 0));
 		getContentPane().setBackground(new Color(224, 255, 255));
@@ -53,19 +53,12 @@ public class VentanaCrearSesion extends JFrame {
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new VentanaPrincipal(usuario, controlador);
+				new VentanaPrincipal(usuario);
 			}
 		});
 		getContentPane().add(btnVolver);
 		
 		JButton btnAniadir = new JButton("Añadir");
-		btnAniadir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		btnAniadir.setBounds(248, 268, 89, 23);
-		getContentPane().add(btnAniadir);
 		
 		JLabel lblTitulo = new JLabel("Título: ");
 		lblTitulo.setBounds(10, 100, 48, 14);
@@ -80,6 +73,8 @@ public class VentanaCrearSesion extends JFrame {
 		comboBoxDeporte.setSelectedIndex(1);
 		comboBoxDeporte.setBounds(338, 97, 148, 20);
 		getContentPane().add(comboBoxDeporte);
+		
+		
 		
 		textTitulo = new JTextField();
 		textTitulo.setBounds(100, 97, 148, 20);
@@ -111,6 +106,17 @@ public class VentanaCrearSesion extends JFrame {
 		JLabel lblDuracion = new JLabel("Duración: ");
 		lblDuracion.setBounds(277, 190, 74, 14);
 		getContentPane().add(lblDuracion);
+		
+		btnAniadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new VentanaPrincipal(usuario);
+				
+			}
+		});
+		btnAniadir.setBounds(248, 268, 89, 23);
+		getContentPane().add(btnAniadir);
+		
 		
 		JLabel lblDistancia = new JLabel("Distancia: ");
 		lblDistancia.setBounds(10, 141, 80, 14);

@@ -9,12 +9,12 @@ import server.dto.SesionDTO;
 import server.dto.RetoDTO;
 
 //This class implements Controller pattern.
-public class StravaController {
+public class VentanaPrincipalController {
 	
 	//Reference to the Service Locator
 	private ServiceLocator serviceLocator;
 	
-	public StravaController(ServiceLocator serviceLocator) {
+	public VentanaPrincipalController(ServiceLocator serviceLocator) {
 		this.serviceLocator = serviceLocator; 
 	}
 
@@ -22,7 +22,7 @@ public class StravaController {
 		try {
 			return this.serviceLocator.getService().getRetos(deporte);
 		} catch (RemoteException e) {
-			System.out.println("# Error getting retos: " + e);
+			System.out.println("# Error al obtener los retos: " + e);
 			return null;
 		}
 	}
@@ -31,7 +31,7 @@ public class StravaController {
 		try {
 			return this.serviceLocator.getService().getSesiones(deporte);
 		} catch (RemoteException e) {
-			System.out.println("# Error getting articles of a category: " + e);
+			System.out.println("# Error al obtener las sesiones: " + e);
 			return null;
 		}
 	}

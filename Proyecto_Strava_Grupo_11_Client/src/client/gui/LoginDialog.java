@@ -18,7 +18,7 @@ public class LoginDialog {
 		boolean result = this.controller.login(email, sha1);
 		System.out.println("\t* Login result: " + result);
 		System.out.println("\t* Token: " + this.controller.getToken());
-
+		
 		return result;
 	}
 	

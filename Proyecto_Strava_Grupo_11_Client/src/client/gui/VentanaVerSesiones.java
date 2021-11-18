@@ -21,7 +21,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.CompoundBorder;
 import javax.swing.table.DefaultTableModel;
 
-import client.controller.StravaController;
 import server.dto.SesionDTO;
 import server.dto.UsuarioDTO;
 
@@ -31,7 +30,7 @@ public class VentanaVerSesiones extends JFrame {
 	
 	private DefaultTableModel dtm;
 
-	public VentanaVerSesiones(UsuarioDTO usuario, StravaController controlador,List<SesionDTO> sesiones, List<SesionDTO> sesiones2) {
+	public VentanaVerSesiones(UsuarioDTO usuario, List<SesionDTO> sesiones, List<SesionDTO> sesiones2) {
 				
 		new JFrame();
 		getContentPane().setBackground(new Color(224, 255, 255));
@@ -42,7 +41,7 @@ public class VentanaVerSesiones extends JFrame {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new VentanaPrincipal(usuario, controlador);
+				new VentanaPrincipal(usuario);
 				dispose();
 			}
 		});
@@ -89,7 +88,7 @@ public class VentanaVerSesiones extends JFrame {
 	
 		
 		JComboBox comboBoxDeportes = new JComboBox();
-		comboBoxDeportes.setModel(new DefaultComboBoxModel(new String[] {"Natacion", "Triatlon", "Baloncesto", "Ciclismo", "Escalada", "Carreras"}));
+		comboBoxDeportes.setModel(new DefaultComboBoxModel(new String[] {"Natacion", "Triatlon", "Baloncesto", "Ciclismo", "Atletismo", "Futbol"}));
 		comboBoxDeportes.setSelectedIndex(0);
 		comboBoxDeportes.setBounds(40, 82, 108, 22);
 		getContentPane().add(comboBoxDeportes);
