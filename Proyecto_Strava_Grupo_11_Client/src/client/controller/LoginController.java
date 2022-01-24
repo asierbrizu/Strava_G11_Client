@@ -2,6 +2,7 @@ package client.controller;
 
 import java.rmi.RemoteException;
 import client.remote.ServiceLocator;
+import server.domain.TipoUsuario;
 import server.dto.UsuarioDTO;
 
 //This class implements Controller pattern.
@@ -16,9 +17,9 @@ public class LoginController {
 		this.serviceLocator = serviceLocator;
 	}
 	
-	public boolean login(String email, String password) {
+	public boolean login(String email, String password, TipoUsuario tipo) {
 		try {
-			this.token = this.serviceLocator.getService().login(email, password);			
+			this.token = this.serviceLocator.getService().login(email, password, tipo);			
 			return true;
 		} catch (RemoteException e) {
 			System.out.println("# Error al iniciar sesión: " + e);

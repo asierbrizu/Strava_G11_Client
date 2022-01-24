@@ -4,7 +4,7 @@ import java.util.List;
 import client.gui.VentanaIniciarSesion;
 import client.gui.VentanaPrincipal;
 import client.controller.LoginController;
-import client.controller.VentanaPrincipalController;
+import client.controller.StravaController;
 import client.gui.LoginDialog;
 import client.gui.VentanaIniciarSesion;
 import client.remote.ServiceLocator;
@@ -13,7 +13,7 @@ import server.dto.UsuarioDTO;
 public class MainProgram {
 
 	public static LoginDialog loginDialog;
-	public static VentanaPrincipalController ventanaPrincipalController;			
+	public static StravaController stravaController;			
 	
 
 		public static void main(String[] args) {	
@@ -25,9 +25,9 @@ public class MainProgram {
 			serviceLocator.setService(args[0], args[1], args[2]);
 			
 			LoginController loginController = new LoginController(serviceLocator);
-			loginDialog=new LoginDialog(loginController);
-			ventanaPrincipalController = new VentanaPrincipalController(serviceLocator);
-			VentanaIniciarSesion ventana = new VentanaIniciarSesion();
+			loginDialog=new LoginDialog(loginController, stravaController);
+			stravaController = new StravaController(serviceLocator);
+			VentanaIniciarSesion ventana = new VentanaIniciarSesion(loginController, stravaController);
 			
 			
 			

@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import client.controller.VentanaPrincipalController;
+import client.controller.StravaController;
 import client.remote.ServiceLocator;
 import client.MainProgram;
 import client.controller.LoginController;
@@ -15,7 +15,7 @@ import server.dto.UsuarioDTO;
 
 public class VentanaPrincipal extends JFrame {	
 	
-	private static VentanaPrincipalController controlador = MainProgram.ventanaPrincipalController;
+	private static StravaController controlador = MainProgram.stravaController;
 	
 	public VentanaPrincipal(UsuarioDTO usuario) {
 		

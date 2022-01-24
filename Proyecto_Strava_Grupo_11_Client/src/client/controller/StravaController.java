@@ -9,12 +9,12 @@ import server.dto.SesionDTO;
 import server.dto.RetoDTO;
 
 //This class implements Controller pattern.
-public class VentanaPrincipalController {
+public class StravaController {
 	
 	//Reference to the Service Locator
 	private ServiceLocator serviceLocator;
 	
-	public VentanaPrincipalController(ServiceLocator serviceLocator) {
+	public StravaController(ServiceLocator serviceLocator) {
 		this.serviceLocator = serviceLocator; 
 	}
 

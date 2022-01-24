@@ -9,6 +9,8 @@ import javax.swing.border.LineBorder;
 
 import client.MainProgram;
 import client.controller.LoginController;
+import client.controller.StravaController;
+import server.domain.TipoUsuario;
 import server.dto.UsuarioDTO;
 
 
@@ -35,7 +37,7 @@ public class VentanaIniciarSesion extends JFrame {
 
 	public static VentanaPrincipal principal ;
 
-	public VentanaIniciarSesion() {
+	public VentanaIniciarSesion(LoginController loginController, StravaController stravaController) {
 		setTitle("Inicio");
 		setSize(310,260);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -94,8 +96,8 @@ public class VentanaIniciarSesion extends JFrame {
 	aceptar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(MainProgram.loginDialog.login()) {
-					principal = new VentanaPrincipal(new UsuarioDTO("prueba@opendeusto.es", "Asier Brizuela"));
+				if(MainProgram.loginDialog.login("prueba@opendeusto.es", "Asier Brizuela",TipoUsuario.LOCAL)) {
+					principal = new VentanaPrincipal(new UsuarioDTO("prueba@opendeusto.es", "Asier Brizuela",TipoUsuario.LOCAL));
 					
 				}
 			}
